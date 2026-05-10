@@ -1,0 +1,28 @@
+model Comment {
+  id String @id @default(uuid())
+
+  content String
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id])
+
+  blogId String?
+  blog   Blog?   @relation(fields: [blogId], references: [id])
+
+  parentId String?
+  parent   Comment? @relation("CommentReplies", fields: [parentId], references: [id])
+
+  replies Comment[] @relation("CommentReplies")
+
+  likes     Int @default(0)
+  disLikes  Int @default(0)
+  flagCount Int @default(0)
+
+  isDeleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

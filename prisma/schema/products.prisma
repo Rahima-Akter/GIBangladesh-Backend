@@ -1,0 +1,35 @@
+model Product {
+  id String @id @default(uuid())
+
+  title       String
+  description String
+
+  coverImage String
+  origin     String
+
+  culturalSignificancehistory String
+  detaildDescription          String
+
+  category             String
+  giRegistrationNumber String
+  registeredYear       Int
+  isVerified           Boolean @default(true)
+
+  status ProductStatus @default(ACTIVE)
+
+  craftingSteps String[]
+  tags          String[]
+
+  views     Int @default(0)
+  likes     Int @default(0)
+  disLikes  Int @default(0)
+  flagCount Int @default(0)
+
+  createdById String
+  createdBy   User   @relation(fields: [createdById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  comments Comment[]
+}

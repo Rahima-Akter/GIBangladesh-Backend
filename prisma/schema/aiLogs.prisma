@@ -1,0 +1,19 @@
+model AiLog {
+  id String @id @default(uuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  featureType AiFeatureType
+
+  prompt   String
+  response String
+
+  tokensUsed Int?
+
+  isSuccess Boolean @default(true)
+
+  errorMessage String?
+
+  createdAt DateTime @default(now())
+}

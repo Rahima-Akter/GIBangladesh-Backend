@@ -1,0 +1,14 @@
+model Analytics {
+  id String @id @default(uuid())
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  eventType AnalyticsEventType
+
+  entityId String?
+
+  metadata Json?
+
+  createdAt DateTime @default(now())
+}
