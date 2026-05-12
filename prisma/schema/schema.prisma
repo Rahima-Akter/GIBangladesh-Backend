@@ -12,8 +12,9 @@ model User {
   name  String
   email String
 
-  bio     String?
-  address String?
+  bio       String?
+  address   String?
+  isDeleted Boolean @default(false)
 
   emailVerified Boolean     @default(false)
   image         String?
