@@ -2,7 +2,11 @@ import { prisma } from "../../lib/prisma";
 import { auth } from "../../lib/auth";
 import { createToken } from "../../utils/jwt";
 import { AppError } from "../../middlewares/globalErrorHandler";
-import { uploadToCloudinary, deleteFromCloudinary, getPublicIdFromUrl } from "../../utils/cloudinary";
+import {
+  uploadToCloudinary,
+  deleteFromCloudinary,
+  getPublicIdFromUrl,
+} from "../../utils/cloudinary";
 import paginationHelper from "../../helpers/pagination.helper";
 import { buildUserSearch } from "../../helpers/search.helper";
 import { buildUserFilter } from "../../helpers/filter.helper";
@@ -25,7 +29,7 @@ const register = async (data: RegisterInput): Promise<AuthResponse> => {
   if (existingUser) {
     throw new AppError(
       "A user with this email already exists",
-      httpStatus.CONFLICT
+      httpStatus.CONFLICT,
     );
   }
 
@@ -45,14 +49,14 @@ const register = async (data: RegisterInput): Promise<AuthResponse> => {
     if (!user) {
       throw new AppError(
         "User registration failed",
-        httpStatus.INTERNAL_SERVER_ERROR
+        httpStatus.INTERNAL_SERVER_ERROR,
       );
     }
 
     const token = createToken({
       id: user.id,
       email: user.email,
-      role: "USER",
+      role: Role.USER,
     });
 
     return {
@@ -60,7 +64,7 @@ const register = async (data: RegisterInput): Promise<AuthResponse> => {
         id: user.id,
         name: user.name,
         email: user.email,
-        role: "USER",
+        role: Role.USER,
         image: user.image,
       },
       token,
@@ -72,7 +76,7 @@ const register = async (data: RegisterInput): Promise<AuthResponse> => {
 
     throw new AppError(
       error.message || "Registration failed",
-      httpStatus.BAD_REQUEST
+      httpStatus.BAD_REQUEST,
     );
   }
 };
@@ -90,7 +94,7 @@ const login = async (data: LoginInput): Promise<AuthResponse> => {
   if (user.isDeleted) {
     throw new AppError(
       "This account has been deactivated. Please contact support.",
-      httpStatus.FORBIDDEN
+      httpStatus.FORBIDDEN,
     );
   }
 
@@ -112,8 +116,7 @@ const login = async (data: LoginInput): Promise<AuthResponse> => {
 
     // Need to check role from somewhere - for now default to USER
     // You'll need to add a role field or table to manage roles
-    const role = "USER";
-
+    const role = updatedUser.role;
     const token = createToken({
       id: updatedUser.id,
       email: updatedUser.email,
@@ -164,7 +167,7 @@ const getProfile = async (userId: string) => {
 const updateProfile = async (
   userId: string,
   data: UpdateProfileData,
-  imageFile?: Express.Multer.File
+  imageFile?: Express.Multer.File,
 ) => {
   const user = await prisma.user.findUnique({
     where: { id: userId },
@@ -181,7 +184,7 @@ const updateProfile = async (
     if (imageFile) {
       const uploadResult = await uploadToCloudinary(
         imageFile.path,
-        "gi-bangladesh/users"
+        "gi-bangladesh/users",
       );
       imageUrl = uploadResult.secure_url;
 
@@ -229,7 +232,7 @@ const updateProfile = async (
 
     throw new AppError(
       "Failed to update profile",
-      httpStatus.INTERNAL_SERVER_ERROR
+      httpStatus.INTERNAL_SERVER_ERROR,
     );
   }
 };
@@ -249,12 +252,20 @@ const deleteOwnAccount = async (userId: string) => {
     throw new AppError("User not found", httpStatus.NOT_FOUND);
   }
 
-  await prisma.user.update({
-    where: { id: userId },
-    data: {
-      isDeleted: true,
-    },
-  });
+  if (
+    user.id === userId ||
+    user.role === Role.ADMIN ||
+    user.role === Role.SUPER_ADMIN
+  ) {
+    await prisma.user.delete({
+      where: { id: userId },
+    });
+  } else {
+    throw new AppError(
+      "You are not authorized to delete this account",
+      httpStatus.FORBIDDEN,
+    );
+  }
 
   return { message: "Account deleted successfully" };
 };
@@ -361,7 +372,12 @@ const getUserById = async (userId: string) => {
 // ADMIN & SUPER_ADMIN: Update any user
 const updateUserByAdmin = async (
   userId: string,
-  data: { name?: string; role?: string; bio?: string | null; address?: string | null }
+  data: {
+    name?: string;
+    role?: string;
+    bio?: string | null;
+    address?: string | null;
+  },
 ) => {
   const user = await prisma.user.findUnique({
     where: { id: userId },
@@ -444,29 +460,68 @@ const reviveUser = async (userId: string) => {
 };
 
 // ADMIN & SUPER_ADMIN: Hard delete user (permanent)
-const hardDeleteUser = async (userId: string) => {
-  const user = await prisma.user.findUnique({
-    where: { id: userId },
+const hardDeleteUser = async (requesterId: string, targetUserId: string) => {
+  // Logged-in user
+  const requester = await prisma.user.findUnique({
+    where: { id: requesterId },
   });
 
-  if (!user) {
+  if (!requester) {
+    throw new AppError("Requester not found", httpStatus.NOT_FOUND);
+  }
+
+  // User to delete
+  const targetUser = await prisma.user.findUnique({
+    where: { id: targetUserId },
+  });
+
+  if (!targetUser) {
     throw new AppError("User not found", httpStatus.NOT_FOUND);
   }
 
+  const isOwner = requesterId === targetUserId;
+
+  const isSuperAdmin = requester.role === Role.SUPER_ADMIN;
+
+  const isAdminDeletingUser =
+    requester.role === Role.ADMIN && targetUser.role === Role.USER;
+
+  // Authorization check
+  if (!isOwner && !isSuperAdmin && !isAdminDeletingUser) {
+    throw new AppError(
+      "You are not authorized to delete this account",
+      httpStatus.FORBIDDEN,
+    );
+  }
+
+  // Prevent ADMIN from deleting ADMIN/SUPER_ADMIN
+  if (
+    requester.role === Role.ADMIN &&
+    (targetUser.role === Role.ADMIN || targetUser.role === Role.SUPER_ADMIN)
+  ) {
+    throw new AppError(
+      "Admins cannot delete admin or super admin accounts",
+      httpStatus.FORBIDDEN,
+    );
+  }
+
   // Delete user's image from Cloudinary
-  if (user.image) {
-    const publicId = getPublicIdFromUrl(user.image);
+  if (targetUser.image) {
+    const publicId = getPublicIdFromUrl(targetUser.image);
+
     if (publicId) {
       await deleteFromCloudinary(publicId);
     }
   }
 
-  // Delete user (cascade will handle related records based on your schema)
+  // Permanently delete user
   await prisma.user.delete({
-    where: { id: userId },
+    where: { id: targetUserId },
   });
 
-  return { message: "User permanently deleted successfully" };
+  return {
+    message: "User permanently deleted successfully",
+  };
 };
 
 export const authService = {

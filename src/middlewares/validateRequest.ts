@@ -21,7 +21,7 @@ const validateRequest = (schemas: ValidationSchemas) => {
       if (schemas.query) {
         const parsedQuery = await schemas.query.parseAsync(req.query);
         // We need to cast because Express query types are strict
-        (req as any).query = parsedQuery;
+        Object.assign(req.query, parsedQuery);
       }
 
       // Validate route parameters

@@ -15,6 +15,7 @@ model User {
   bio       String?
   address   String?
   isDeleted Boolean @default(false)
+  role      Role    @default(USER)
 
   emailVerified Boolean     @default(false)
   image         String?

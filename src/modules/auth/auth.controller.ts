@@ -53,7 +53,9 @@ const updateProfile = catchAsync(async (req: Request, res: Response) => {
 
   const updated = await authService.updateProfile(userId, req.body, imageFile);
 
-  sendResponse(res, httpStatus.OK, "Profile updated successfully", { user: updated });
+  sendResponse(res, httpStatus.OK, "Profile updated successfully", {
+    user: updated,
+  });
 });
 
 // Logout
@@ -92,7 +94,7 @@ const getAllUsers = catchAsync(async (req: Request, res: Response) => {
     httpStatus.OK,
     "Users fetched successfully",
     result.users,
-    result.meta
+    result.meta,
   );
 });
 
@@ -107,9 +109,14 @@ const getUserById = catchAsync(async (req: Request, res: Response) => {
 // ADMIN: Update any user
 const updateUserByAdmin = catchAsync(async (req: Request, res: Response) => {
   const { userId } = req.params;
-  const updated = await authService.updateUserByAdmin(userId as string, req.body);
+  const updated = await authService.updateUserByAdmin(
+    userId as string,
+    req.body,
+  );
 
-  sendResponse(res, httpStatus.OK, "User updated successfully", { user: updated });
+  sendResponse(res, httpStatus.OK, "User updated successfully", {
+    user: updated,
+  });
 });
 
 // ADMIN: Soft delete user
@@ -130,8 +137,13 @@ const reviveUser = catchAsync(async (req: Request, res: Response) => {
 
 // ADMIN: Hard delete user
 const hardDeleteUser = catchAsync(async (req: Request, res: Response) => {
-  const { userId } = req.params;
-  const result = await authService.hardDeleteUser(userId as string);
+  const requesterId = req.user!.id;
+  const { userId: targetUserId } = req.params;
+
+  const result = await authService.hardDeleteUser(
+    requesterId,
+    targetUserId as string,
+  );
 
   sendResponse(res, httpStatus.OK, result.message);
 });

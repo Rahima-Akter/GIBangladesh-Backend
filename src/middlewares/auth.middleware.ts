@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import httpStatus from "http-status";
 import { verifyToken } from "../utils/jwt";
 import catchAsync from "../utils/catchAsync";
+import { Role } from "../../generated/prisma/enums";
 
 // Extend Express Request to include user
 declare global {
@@ -10,7 +11,7 @@ declare global {
       user?: {
         id: string;
         email: string;
-        role: string;
+        role: Role;
       };
     }
   }
@@ -36,7 +37,8 @@ export const auth = catchAsync(
     if (!token) {
       res.status(httpStatus.UNAUTHORIZED).json({
         success: false,
-        message: "You are not logged in. Please log in to access this resource.",
+        message:
+          "You are not logged in. Please log in to access this resource.",
       });
       return;
     }
@@ -44,7 +46,11 @@ export const auth = catchAsync(
     try {
       // Verify the token
       const decoded = verifyToken(token);
-      req.user = decoded;
+      req.user = decoded as {
+        id: string;
+        email: string;
+        role: Role;
+      };
       next();
     } catch (error) {
       res.status(httpStatus.UNAUTHORIZED).json({
@@ -53,7 +59,7 @@ export const auth = catchAsync(
       });
       return;
     }
-  }
+  },
 );
 
 // Middleware to restrict access based on roles
@@ -96,7 +102,11 @@ export const optionalAuth = catchAsync(
     if (token) {
       try {
         const decoded = verifyToken(token);
-        req.user = decoded;
+        req.user = decoded as {
+          id: string;
+          email: string;
+          role: Role;
+        };
       } catch (error) {
         // Token is invalid, but that's okay for optional auth
         // Just don't attach user
@@ -104,5 +114,5 @@ export const optionalAuth = catchAsync(
     }
 
     next();
-  }
+  },
 );

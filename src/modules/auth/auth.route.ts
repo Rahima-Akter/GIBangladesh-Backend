@@ -20,14 +20,14 @@ router.post(
   "/register",
   authLimiter,
   validateRequest(registerSchema),
-  authController.register
+  authController.register,
 );
 
 router.post(
   "/login",
   authLimiter,
   validateRequest(loginSchema),
-  authController.login
+  authController.login,
 );
 
 // ==================== PROTECTED ROUTES (Any authenticated user) ====================
@@ -39,7 +39,7 @@ router.patch(
   auth,
   uploadSingle,
   validateRequest(updateProfileSchema),
-  authController.updateProfile
+  authController.updateProfile,
 );
 
 router.post("/logout", auth, authController.logout);
@@ -53,14 +53,14 @@ router.get(
   auth,
   restrictTo(Role.ADMIN, Role.SUPER_ADMIN),
   validateRequest(userQuerySchema),
-  authController.getAllUsers
+  authController.getAllUsers,
 );
 
 router.get(
   "/users/:userId",
   auth,
   restrictTo(Role.ADMIN, Role.SUPER_ADMIN),
-  authController.getUserById
+  authController.getUserById,
 );
 
 router.patch(
@@ -68,7 +68,7 @@ router.patch(
   auth,
   restrictTo(Role.ADMIN, Role.SUPER_ADMIN),
   validateRequest(updateUserSchema),
-  authController.updateUserByAdmin
+  authController.updateUserByAdmin,
 );
 
 // Soft delete user
@@ -76,7 +76,7 @@ router.delete(
   "/users/:userId/soft",
   auth,
   restrictTo(Role.ADMIN, Role.SUPER_ADMIN),
-  authController.softDeleteUser
+  authController.softDeleteUser,
 );
 
 // Revive soft deleted user
@@ -84,15 +84,15 @@ router.patch(
   "/users/:userId/revive",
   auth,
   restrictTo(Role.ADMIN, Role.SUPER_ADMIN),
-  authController.reviveUser
+  authController.reviveUser,
 );
 
 // Hard delete user (permanent)
 router.delete(
-  "/users/:userId/hard",
+  "/users/:userId/delete",
   auth,
-  restrictTo(Role.SUPER_ADMIN), // Only SUPER_ADMIN can permanently delete
-  authController.hardDeleteUser
+  restrictTo(Role.SUPER_ADMIN, Role.ADMIN, Role.USER),
+  authController.hardDeleteUser,
 );
 
 // Admin check route
@@ -105,7 +105,7 @@ router.get(
       success: true,
       message: "You have admin access",
     });
-  }
+  },
 );
 
 export const authRoutes = router;
