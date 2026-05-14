@@ -17,10 +17,10 @@ model User {
   isDeleted Boolean @default(false)
   role      Role    @default(USER)
 
-  emailVerified Boolean     @default(false)
+  emailVerified Boolean       @default(false)
   image         String?
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
   sessions      Session[]
   accounts      Account[]
   blogs         Blog[]
@@ -28,6 +28,9 @@ model User {
   products      Product[]
   aiLogs        AiLog[]
   analytics     Analytics[]
+  blogLikes     BlogLike[]
+  blogDislikes  BlogDislike[]
+  blogFlags     BlogFlag[]
 
   @@unique([email])
   @@map("user")

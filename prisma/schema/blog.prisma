@@ -11,10 +11,7 @@ model Blog {
   status   BlogStatus @default(PUBLISHED)
   category String
 
-  views     Int @default(0)
-  likes     Int @default(0)
-  disLikes  Int @default(0)
-  flagCount Int @default(0)
+  views Int @default(0)
 
   createdById String
   createdBy   User   @relation(fields: [createdById], references: [id])
@@ -23,4 +20,43 @@ model Blog {
   updatedAt DateTime @updatedAt
 
   comments Comment[]
+  likes    BlogLike[]
+  dislikes BlogDislike[]
+  flags    BlogFlag[]
+}
+
+model BlogLike {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  blogId    String
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, blogId])
+  @@map("blog_likes")
+}
+
+model BlogDislike {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  blogId    String
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, blogId])
+  @@map("blog_dislikes")
+}
+
+model BlogFlag {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  blogId    String
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, blogId])
+  @@map("blog_flags")
 }

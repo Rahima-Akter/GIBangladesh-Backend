@@ -8,7 +8,11 @@ import { productService } from "./product.service";
 const createProduct = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user!.id;
   const imageFile = req.file;
-  const result = await productService.createProduct(userId, req.body, imageFile);
+  const result = await productService.createProduct(
+    userId,
+    req.body,
+    imageFile,
+  );
 
   sendResponse(res, httpStatus.CREATED, "Product created successfully", result);
 });
@@ -22,7 +26,7 @@ const getAllProducts = catchAsync(async (req: Request, res: Response) => {
     httpStatus.OK,
     "Products fetched successfully",
     result.products,
-    result.meta
+    result.meta,
   );
 });
 
@@ -38,7 +42,11 @@ const getProductById = catchAsync(async (req: Request, res: Response) => {
 const updateProduct = catchAsync(async (req: Request, res: Response) => {
   const { productId } = req.params;
   const imageFile = req.file;
-  const result = await productService.updateProduct(productId as string, req.body, imageFile);
+  const result = await productService.updateProduct(
+    productId as string,
+    req.body,
+    imageFile,
+  );
 
   sendResponse(res, httpStatus.OK, "Product updated successfully", result);
 });
@@ -58,20 +66,39 @@ const getProductCategories = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, httpStatus.OK, "Categories fetched successfully", result);
 });
 
-// Like product (Any authenticated user)
+// Like product
 const likeProduct = catchAsync(async (req: Request, res: Response) => {
   const { productId } = req.params;
-  const result = await productService.likeProduct(productId as string);
-
-  sendResponse(res, httpStatus.OK, "Product liked successfully", result);
+  const userId = req.user!.id;
+  const result = await productService.likeProduct(productId as string, userId);
+  sendResponse(res, httpStatus.OK, result.message, {
+    likesCount: result.likesCount,
+    dislikesCount: result.dislikesCount,
+    hasLiked: result.hasLiked,
+  });
 });
 
-// Dislike product (Any authenticated user)
-const dislikeProduct = catchAsync(async (req: Request, res: Response) => {
+// Dislike product
+const disLikeProduct = catchAsync(async (req: Request, res: Response) => {
   const { productId } = req.params;
-  const result = await productService.dislikeProduct(productId as string);
+  const userId = req.user!.id;
+  const result = await productService.disLikeProduct(productId as string, userId);
+  sendResponse(res, httpStatus.OK, result.message, {
+    likesCount: result.likesCount,
+    dislikesCount: result.dislikesCount,
+    hasDisliked: result.hasDisliked,
+  });
+});
 
-  sendResponse(res, httpStatus.OK, "Product disliked successfully", result);
+// Flag product
+const flagProduct = catchAsync(async (req: Request, res: Response) => {
+  const { productId } = req.params;
+  const userId = req.user!.id;
+  const result = await productService.flagProduct(productId as string, userId);
+  sendResponse(res, httpStatus.OK, result.message, {
+    flagsCount: result.flagsCount,
+    hasFlagged: result.hasFlagged,
+  });
 });
 
 export const productController = {
@@ -82,5 +109,6 @@ export const productController = {
   deleteProduct,
   getProductCategories,
   likeProduct,
-  dislikeProduct,
+  disLikeProduct,
+  flagProduct,
 };

@@ -1,7 +1,11 @@
 import { Router } from "express";
 import { productController } from "./product.controller";
 import validateRequest from "../../middlewares/validateRequest";
-import { auth, optionalAuth, restrictTo } from "../../middlewares/auth.middleware";
+import {
+  auth,
+  optionalAuth,
+  restrictTo,
+} from "../../middlewares/auth.middleware";
 import { uploadSingle } from "../../middlewares/upload.middleware";
 import {
   createProductSchema,
@@ -17,7 +21,7 @@ router.get(
   "/",
   optionalAuth,
   validateRequest(productQuerySchema),
-  productController.getAllProducts
+  productController.getAllProducts,
 );
 
 router.get("/categories", productController.getProductCategories);
@@ -26,7 +30,8 @@ router.get("/:productId", optionalAuth, productController.getProductById);
 
 // AUTHENTICATED USER ROUTES (Any logged-in user)
 router.post("/:productId/like", auth, productController.likeProduct);
-router.post("/:productId/dislike", auth, productController.dislikeProduct);
+router.post("/:productId/dislike", auth, productController.disLikeProduct);
+router.post("/:productId/flag", auth, productController.flagProduct);
 
 // ADMIN & SUPER_ADMIN ONLY ROUTES
 router.post(
@@ -35,7 +40,7 @@ router.post(
   restrictTo(Role.ADMIN, Role.SUPER_ADMIN),
   uploadSingle, // Handle file upload
   validateRequest(createProductSchema),
-  productController.createProduct
+  productController.createProduct,
 );
 
 router.patch(
@@ -44,14 +49,14 @@ router.patch(
   restrictTo(Role.ADMIN, Role.SUPER_ADMIN),
   uploadSingle, // Handle file upload (optional)
   validateRequest(updateProductSchema),
-  productController.updateProduct
+  productController.updateProduct,
 );
 
 router.delete(
   "/:productId",
   auth,
   restrictTo(Role.ADMIN, Role.SUPER_ADMIN),
-  productController.deleteProduct
+  productController.deleteProduct,
 );
 
 export const productRoutes = router;
