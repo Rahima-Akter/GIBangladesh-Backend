@@ -15,12 +15,45 @@ model Comment {
   parentId String?
   parent   Comment? @relation("CommentReplies", fields: [parentId], references: [id])
 
-  replies Comment[] @relation("CommentReplies")
-
-  likes     Int @default(0)
-  disLikes  Int @default(0)
-  flagCount Int @default(0)
+  replies  Comment[]        @relation("CommentReplies")
+  // relations
+  likes    CommentLike[]
+  dislikes CommentDislike[]
+  flags    CommentFlag[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model CommentLike {
+  id        String   @id @default(uuid())
+  userId    String
+  commentId String
+  createdAt DateTime @default(now())
+  comment   Comment  @relation(fields: [commentId], references: [id])
+
+  @@unique([userId, commentId])
+  @@map("comment_likes")
+}
+
+model CommentDislike {
+  id        String   @id @default(uuid())
+  userId    String
+  commentId String
+  createdAt DateTime @default(now())
+  comment   Comment  @relation(fields: [commentId], references: [id])
+
+  @@unique([userId, commentId])
+  @@map("comment_dislikes")
+}
+
+model CommentFlag {
+  id        String   @id @default(uuid())
+  userId    String
+  commentId String
+  createdAt DateTime @default(now())
+  comment   Comment  @relation(fields: [commentId], references: [id])
+
+  @@unique([userId, commentId])
+  @@map("comment_flags")
 }

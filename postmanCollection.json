@@ -61,8 +61,13 @@
             },
             "url": {
               "raw": "{{base_url}}/auth/register",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "register"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
             }
           }
         },
@@ -99,8 +104,13 @@
             },
             "url": {
               "raw": "{{base_url}}/auth/login",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "login"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
             }
           }
         },
@@ -137,8 +147,13 @@
             },
             "url": {
               "raw": "{{base_url}}/auth/login",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "login"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
             }
           }
         },
@@ -175,8 +190,13 @@
             },
             "url": {
               "raw": "{{base_url}}/auth/login",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "login"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
             }
           }
         },
@@ -192,8 +212,13 @@
             ],
             "url": {
               "raw": "{{base_url}}/auth/profile",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "profile"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "profile"
+              ]
             }
           }
         },
@@ -217,8 +242,13 @@
             },
             "url": {
               "raw": "{{base_url}}/auth/profile",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "profile"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "profile"
+              ]
             }
           }
         },
@@ -234,8 +264,13 @@
             ],
             "url": {
               "raw": "{{base_url}}/auth/logout",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "logout"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ]
             }
           }
         },
@@ -251,8 +286,13 @@
             ],
             "url": {
               "raw": "{{base_url}}/auth/account",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "account"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "account"
+              ]
             }
           }
         },
@@ -268,8 +308,13 @@
             ],
             "url": {
               "raw": "{{base_url}}/auth/users?search=&role=USER&status=ACTIVE&sortBy=createdAt&sortOrder=desc&page=1&limit=10",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "users"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "users"
+              ],
               "query": [
                 {
                   "key": "search",
@@ -318,8 +363,14 @@
             ],
             "url": {
               "raw": "{{base_url}}/auth/users/:userId",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "users", ":userId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "users",
+                ":userId"
+              ],
               "variable": [
                 {
                   "key": "userId",
@@ -349,8 +400,14 @@
             },
             "url": {
               "raw": "{{base_url}}/auth/users/:userId",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "users", ":userId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "users",
+                ":userId"
+              ],
               "variable": [
                 {
                   "key": "userId",
@@ -372,8 +429,15 @@
             ],
             "url": {
               "raw": "{{base_url}}/auth/users/:userId/soft",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "users", ":userId", "soft"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "users",
+                ":userId",
+                "soft"
+              ],
               "variable": [
                 {
                   "key": "userId",
@@ -395,8 +459,15 @@
             ],
             "url": {
               "raw": "{{base_url}}/auth/users/:userId/revive",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "users", ":userId", "revive"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "users",
+                ":userId",
+                "revive"
+              ],
               "variable": [
                 {
                   "key": "userId",
@@ -418,8 +489,13 @@
             ],
             "url": {
               "raw": "{{base_url}}/auth/admin-check",
-              "host": ["{{base_url}}"],
-              "path": ["auth", "admin-check"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "admin-check"
+              ]
             }
           }
         }
@@ -434,8 +510,12 @@
             "method": "GET",
             "url": {
               "raw": "{{base_url}}/products?search=&category=&origin=&registeredYear=&status=ACTIVE&sortBy=createdAt&sortOrder=desc&page=1&limit=10",
-              "host": ["{{base_url}}"],
-              "path": ["products"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ],
               "query": [
                 {
                   "key": "search",
@@ -488,8 +568,13 @@
             "method": "GET",
             "url": {
               "raw": "{{base_url}}/products/:productId",
-              "host": ["{{base_url}}"],
-              "path": ["products", ":productId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                ":productId"
+              ],
               "variable": [
                 {
                   "key": "productId",
@@ -505,8 +590,13 @@
             "method": "GET",
             "url": {
               "raw": "{{base_url}}/products/categories",
-              "host": ["{{base_url}}"],
-              "path": ["products", "categories"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                "categories"
+              ]
             }
           }
         },
@@ -522,8 +612,72 @@
             ],
             "url": {
               "raw": "{{base_url}}/products/:productId/like",
-              "host": ["{{base_url}}"],
-              "path": ["products", ":productId", "like"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                ":productId",
+                "like"
+              ],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "replace-with-product-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Dislike Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/products/:productId/dislike",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                ":productId",
+                "dislike"
+              ],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "replace-with-product-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Flag Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/products/:productId/flag",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                ":productId",
+                "flag"
+              ],
               "variable": [
                 {
                   "key": "productId",
@@ -608,8 +762,12 @@
             },
             "url": {
               "raw": "{{base_url}}/products",
-              "host": ["{{base_url}}"],
-              "path": ["products"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ]
             }
           }
         },
@@ -629,8 +787,13 @@
             },
             "url": {
               "raw": "{{base_url}}/products/:productId",
-              "host": ["{{base_url}}"],
-              "path": ["products", ":productId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                ":productId"
+              ],
               "variable": [
                 {
                   "key": "productId",
@@ -652,13 +815,1038 @@
             ],
             "url": {
               "raw": "{{base_url}}/products/:productId",
-              "host": ["{{base_url}}"],
-              "path": ["products", ":productId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                ":productId"
+              ],
               "variable": [
                 {
                   "key": "productId",
                   "value": "replace-with-product-id"
                 }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Blogs",
+      "item": [
+        {
+          "name": "Get All Blogs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/blogs?search=&category=&status=PUBLISHED&tags=&sortBy=createdAt&sortOrder=desc&page=1&limit=10",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blogs"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "",
+                  "description": "Search by title or content"
+                },
+                {
+                  "key": "category",
+                  "value": "",
+                  "description": "Filter by category"
+                },
+                {
+                  "key": "status",
+                  "value": "PUBLISHED",
+                  "description": "PUBLISHED or DRAFT"
+                },
+                {
+                  "key": "tags",
+                  "value": "",
+                  "description": "Filter by tags (comma separated)"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "createdAt"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "desc"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Blog Categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/blogs/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blogs",
+                "categories"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Blog",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/blogs/:blogId",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blogs",
+                ":blogId"
+              ],
+              "variable": [
+                {
+                  "key": "blogId",
+                  "value": "replace-with-blog-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Like Blog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/blogs/:blogId/like",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blogs",
+                ":blogId",
+                "like"
+              ],
+              "variable": [
+                {
+                  "key": "blogId",
+                  "value": "replace-with-blog-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Dislike Blog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/blogs/:blogId/dislike",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blogs",
+                ":blogId",
+                "dislike"
+              ],
+              "variable": [
+                {
+                  "key": "blogId",
+                  "value": "replace-with-blog-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Flag Blog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/blogs/:blogId/flag",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blogs",
+                ":blogId",
+                "flag"
+              ],
+              "variable": [
+                {
+                  "key": "blogId",
+                  "value": "replace-with-blog-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Blog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"The Art of Jamdani Weaving\",\n  \"content\": \"Jamdani weaving is a traditional art form passed down through generations...\",\n  \"coverImage\": \"https://example.com/jamdani-blog.jpg\",\n  \"tags\": [\"textile\", \"tradition\", \"handloom\"],\n  \"category\": \"Culture\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/blogs",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blogs"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Blog",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Blog Title\",\n  \"status\": \"PUBLISHED\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/blogs/:blogId",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blogs",
+                ":blogId"
+              ],
+              "variable": [
+                {
+                  "key": "blogId",
+                  "value": "replace-with-blog-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Blog",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/blogs/:blogId",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blogs",
+                ":blogId"
+              ],
+              "variable": [
+                {
+                  "key": "blogId",
+                  "value": "replace-with-blog-id"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "Get Comments (Public)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/comments?productId=&blogId=&parentId=&page=1&limit=10",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments"
+              ],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "",
+                  "description": "Filter by product ID"
+                },
+                {
+                  "key": "blogId",
+                  "value": "",
+                  "description": "Filter by blog ID"
+                },
+                {
+                  "key": "parentId",
+                  "value": "",
+                  "description": "Get replies to a specific comment"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All Comments (Admin Only)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/comments/admin/all?hasFlags=true&page=1&limit=10",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                "admin",
+                "all"
+              ],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "",
+                  "description": "Filter by product ID"
+                },
+                {
+                  "key": "blogId",
+                  "value": "",
+                  "description": "Filter by blog ID"
+                },
+                {
+                  "key": "hasFlags",
+                  "value": "true",
+                  "description": "Filter flagged comments"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Comment",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/comments/:commentId",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                ":commentId"
+              ],
+              "variable": [
+                {
+                  "key": "commentId",
+                  "value": "replace-with-comment-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"This is a great product! Very informative.\",\n  \"productId\": \"replace-with-product-id\",\n  \"blogId\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/comments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Reply to Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"I completely agree with you!\",\n  \"productId\": \"replace-with-product-id\",\n  \"parentId\": \"replace-with-parent-comment-id\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/comments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Comment",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Updated comment content.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/comments/:commentId",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                ":commentId"
+              ],
+              "variable": [
+                {
+                  "key": "commentId",
+                  "value": "replace-with-comment-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Comment",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/comments/:commentId",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                ":commentId"
+              ],
+              "variable": [
+                {
+                  "key": "commentId",
+                  "value": "replace-with-comment-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Like Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/comments/:commentId/like",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                ":commentId",
+                "like"
+              ],
+              "variable": [
+                {
+                  "key": "commentId",
+                  "value": "replace-with-comment-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Dislike Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/comments/:commentId/dislike",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                ":commentId",
+                "dislike"
+              ],
+              "variable": [
+                {
+                  "key": "commentId",
+                  "value": "replace-with-comment-id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Flag Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/comments/:commentId/flag",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                ":commentId",
+                "flag"
+              ],
+              "variable": [
+                {
+                  "key": "commentId",
+                  "value": "replace-with-comment-id"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Tools",
+      "item": [
+        {
+          "name": "Generate Content",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"Write a detailed description about Jamdani saree, its history, and cultural significance.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ai/generate-content",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ai",
+                "generate-content"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Rewrite Text",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"This product is very good and high quality.\",\n  \"tone\": \"professional\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ai/rewrite-text",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ai",
+                "rewrite-text"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Generate Hashtags",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic\": \"Bangladeshi traditional handicrafts\",\n  \"count\": 10\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ai/generate-hashtags",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ai",
+                "generate-hashtags"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Chat Assistant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Tell me about GI products of Bangladesh\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ai/chat",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Usage Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ai/usage?days=7",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ai",
+                "usage"
+              ],
+              "query": [
+                {
+                  "key": "days",
+                  "value": "7",
+                  "description": "Number of days to show stats for"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Track Event (Public)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"PRODUCT_VIEW\",\n  \"entityId\": \"replace-with-product-id\",\n  \"metadata\": {\n    \"source\": \"homepage\",\n    \"device\": \"mobile\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/analytics/track",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "track"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Track Blog View",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"BLOG_VIEW\",\n  \"entityId\": \"replace-with-blog-id\",\n  \"metadata\": {\n    \"source\": \"search\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/analytics/track",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "track"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Track Product Like",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"PRODUCT_LIKE\",\n  \"entityId\": \"replace-with-product-id\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/analytics/track",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "track"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Track AI Usage",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"AI_USED\",\n  \"metadata\": {\n    \"feature\": \"CONTENT_GENERATOR\",\n    \"tokensUsed\": 150\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/analytics/track",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "track"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get My Activity",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/analytics/my-activity?eventType=&page=1&limit=20",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "my-activity"
+              ],
+              "query": [
+                {
+                  "key": "eventType",
+                  "value": "",
+                  "description": "Filter by event type: PRODUCT_VIEW, BLOG_VIEW, etc."
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All Analytics (Admin Only)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/analytics/admin/all?eventType=PRODUCT_VIEW&startDate=2024-01-01&endDate=2024-12-31&page=1&limit=50",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "admin",
+                "all"
+              ],
+              "query": [
+                {
+                  "key": "eventType",
+                  "value": "PRODUCT_VIEW",
+                  "description": "Filter by event type"
+                },
+                {
+                  "key": "userId",
+                  "value": "",
+                  "description": "Filter by user ID"
+                },
+                {
+                  "key": "startDate",
+                  "value": "2024-01-01",
+                  "description": "Start date (YYYY-MM-DD)"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2024-12-31",
+                  "description": "End date (YYYY-MM-DD)"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "50"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Analytics Stats (Admin Only)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/analytics/admin/stats?days=7",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "admin",
+                "stats"
+              ],
+              "query": [
+                {
+                  "key": "days",
+                  "value": "7",
+                  "description": "Number of days to show stats for (default: 7)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Dashboard Stats (Admin Only)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/analytics/admin/dashboard",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "admin",
+                "dashboard"
               ]
             }
           }
